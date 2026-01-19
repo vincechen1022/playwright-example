@@ -1,23 +1,18 @@
 import { test, expect } from '@playwright/test';
 
-// Set viewport size for all tests in this file.
-test.use({
-  viewport: { width: 1200, height: 600 },
-});
-
 test('has title', async ({ page }) => {
-  await page.goto('https://www.aesop.com/');
+  await page.goto('https://playwright.dev/');
 
   // Expect a title "to contain" a substring.
-  await expect(page).toHaveURL(/aesop/);
+  await expect(page).toHaveTitle(/Playwright/);
 });
 
 test('get started link', async ({ page }) => {
-  await page.goto('https://www.aesop.com/');
+  await page.goto('https://playwright.dev/');
 
   // Click the get started link.
-  await page.getByRole('button', { name: 'Search' }).filter({ visible: true }).first().click();
+  await page.getByRole('link', { name: 'Get started' }).click();
 
   // Expects page to have a heading with the name of Installation.
-  await expect(page.getByRole('heading', { name: 'Hand & Body' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
 });
