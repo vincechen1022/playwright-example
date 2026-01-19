@@ -16,7 +16,7 @@ test('get started link', async ({ page }) => {
   await page.goto('https://www.aesop.com/');
 
   // Click the get started link.
-  await page.getByRole('button', { name: 'Search' }).first().click();
+  await page.getByRole('button', { name: 'Search' }).filter({ visible: true }).first().click();
 
   // Expects page to have a heading with the name of Installation.
   await expect(page.getByRole('heading', { name: 'Hand & Body' })).toBeVisible();
